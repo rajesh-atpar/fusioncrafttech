@@ -1,41 +1,73 @@
-import { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Navbar from './components/Layout/Navbar'
-import Footer from './components/Layout/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import Services from './pages/Services'
-import Contact from './pages/Contact'
-import './App.css'
-
-function ScrollToTop() {
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
-  }, [pathname])
-
-  return null
-}
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Navbar } from './components/Navbar_fixed';
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { Services } from './components/Services';
+import { Projects } from './components/Projects';
+import { Technologies } from './components/Skills';
+import { Testimonials } from './components/Contact';
+import { ContactSection } from './components/ContactSection';
+import { Footer } from './components/Footer';
+import { Preloader } from './components/Preloader';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handlePreloaderComplete = () => {
+    setIsLoading(false);
+  };
+
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+      y: 20,
+    },
+    in: {
+      opacity: 1,
+      y: 0,
+    },
+    out: {
+      opacity: 0,
+      y: -20,
+    },
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.8,
+  };
+
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="App">
-        <Navbar />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
-  )
+    <div className="min-h-screen bg-slate-900 overflow-x-hidden">
+      <AnimatePresence mode="wait">
+        <Preloader key="preloader" onComplete={handlePreloaderComplete} />
+      </AnimatePresence>
+
+      {!isLoading && (
+        <motion.div
+          initial="initial"
+          animate="in"
+          exit="out"
+          variants={pageVariants}
+          transition={pageTransition}
+        >
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Services />
+            <Projects />
+            <Technologies />
+            <Testimonials />
+            <ContactSection />
+          </main>
+          <Footer />
+        </motion.div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
