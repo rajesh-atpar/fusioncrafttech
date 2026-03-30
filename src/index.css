@@ -12,6 +12,8 @@
   }
 
   html {
+    /* Framer Motion target-based scroll offsets expect a positioned scroll container. */
+    position: relative;
     scroll-behavior: smooth;
     scroll-padding-top: 7rem;
   }
