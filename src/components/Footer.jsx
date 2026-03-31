@@ -99,15 +99,15 @@ export const Footer = () => {
               <div className="mt-6 space-y-4 text-sm text-slate-300/74">
                 <div>
                   <div className="text-slate-400">Email</div>
-                  <div className="mt-1 text-white">hello@fusioncrafttech.com</div>
+                  <div className="mt-1 text-white">fusioncrafttech@gmail.com</div>
                 </div>
                 <div>
                   <div className="text-slate-400">Phone</div>
-                  <div className="mt-1 text-white">+1 (555) 123-4567</div>
+                  <div className="mt-1 text-white">+91 9360121830</div>
                 </div>
                 <div>
                   <div className="text-slate-400">Location</div>
-                  <div className="mt-1 text-white">Silicon Valley, CA</div>
+                  <div className="mt-1 text-white">Bangalore, India</div>
                 </div>
               </div>
 

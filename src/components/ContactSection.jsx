@@ -38,9 +38,9 @@ export const ContactSection = () => {
   ];
 
   const contactItems = [
-    { icon: Mail, label: 'Email', value: 'hello@fusioncrafttech.com' },
-    { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
-    { icon: MapPin, label: 'Location', value: 'Silicon Valley, California' }
+    { icon: Mail, label: 'Email', value: 'fusioncrafttech@gmail.com' },
+    { icon: Phone, label: 'Phone', value: '+91 9360121830' },
+    { icon: MapPin, label: 'Location', value: 'Bangalore, India' }
   ];
 
   return (
